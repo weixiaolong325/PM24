@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="Shortcut Icon" href="/Images/title.ico" />
+    <title>注册成功</title>
+    <style type="text/css">
+        #content {
+        text-align:center;
+        }
+        #s {
+        color:#00ff21;
+        }
+    </style>
+    <script src="~/Scripts/pm24.js"></script>
+</head>
+<body onload="Redirect()">
+    <div id="content">
+        注册成功!<br /><span id="s"></span>S后自动跳转到<a style="color:#2e58f8" href="@Url.Action("Login","User")">登录</a>
+    </div>
+</body>
+</html>

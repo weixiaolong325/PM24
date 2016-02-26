@@ -1,0 +1,91 @@
+﻿@model PM24.ViewModes.UserInfoView 
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<link href="~/Content/Index.css" rel="stylesheet" />
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+     <link rel="Shortcut Icon" href="/Images/title.ico" />
+    <title>PM24用户注册</title>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/pm24.js"></script>
+</head>
+<body>
+    <div id="lup_top">
+        <img class="img_logomin" src="~/Images/logo_min.JPG" />
+    </div>
+    <div id="lup_txt">免费注册您的pm24账号</div>
+    <div id="lup_logup">
+        <div class="lup_logup_left">
+                 @using(Html.BeginForm("Logup","User",FormMethod.Post,new {id="lup_form"})){
+          <table id="lup_table">
+              <tr class="lup_table_tr1"><td class="lup_table_t1">用&nbsp;户&nbsp;名:&nbsp;<label class="lbl_must">*</label>&nbsp;</td>
+                  <td class="lup_table_t2">
+                      @Html.TextBoxFor(u => u.userInfo.UserId, new { @class = "lup_text" })
+                    @Html.ValidationMessageFor(u => u.userInfo.UserId, "", new {@class="lbl_must"})
+                      @Html.ValidationMessage("err_UserIsExit", new { @class = "lbl_must" })
+                  </td>
+              </tr>
+              <tr class="lup_table_tr2"><td></td><td>以字母开头，长度在6~18之间,只能包含字符、数字、下划线</td></tr>
+              <tr class="lup_table_tr1"><td class="lup_table_t1">密&nbsp;码:&nbsp;<label class="lbl_must">*</label>&nbsp;</td>
+                  <td class="lup_table_t2">
+                      @Html.PasswordFor(u=>u.userInfo.Pwd,new {@class="lup_text"})
+                       @Html.ValidationMessageFor(u => u.userInfo.Pwd, "", new {@class="lbl_must"})
+                  </td>
+              </tr>
+              <tr class="lup_table_tr2"><td></td><td>长度在6~18之间,只能包含字符、数字、特殊字符</td></tr>
+              <tr class="lup_table_tr1"><td class="lup_table_t1">确&nbsp;认&nbsp;密&nbsp;码:&nbsp;<label class="lbl_must">*</label>&nbsp;</td>
+                  <td class="lup_table_t2">
+                      @Html.PasswordFor(u=>u.Pwd2,new {@class="lup_text"})
+                      @Html.ValidationMessageFor(u => u.Pwd2, "", new {@class="lbl_must"})
+                  </td>
+              </tr>
+               <tr class="lup_table_tr2"><td></td><td>请再次填写密码</td></tr>
+              <tr class="lup_table_tr1"><td class="lup_table_t1">昵&nbsp;称:&nbsp;</td>
+                  <td class="lup_table_t2">
+                       @Html.TextBoxFor(u=>u.userInfo.Name,new {@class="lup_text"})
+                       @Html.ValidationMessageFor(u => u.userInfo.Name, "", new {@class="lbl_must"})
+                       @Html.ValidationMessage("err_pwdNoEqual", new { @class = "lbl_must" })
+                  </td>
+              </tr>
+              <tr class="lup_table_tr2"><td></td><td>选填,用户显示名称,不填默认显示账号</td></tr>
+               <tr class="lup_table_tr1"><td class="lup_table_t1">邮&nbsp;箱:&nbsp;</td>
+                  <td class="lup_table_t2">
+                       @Html.TextBoxFor(u=>u.userInfo.Email,new {@class="lup_text"})
+                       @Html.ValidationMessageFor(u => u.userInfo.Email, "", new {@class="lbl_must"})
+                  </td>
+              </tr>
+               <tr class="lup_table_tr2"><td></td><td>选填,建议填,用于找回密码</td></tr>
+              <tr class="lup_table_tr1"><td class="lup_table_t1">验&nbsp;证&nbsp;码:&nbsp;<label class="lbl_must">*</label>&nbsp;</td>
+                  <td class="lup_table_t2">
+                      @Html.TextBoxFor(u=>u.validateCode,new {@class="lup_verificationcode"})
+                      @Html.ValidationMessageFor(u=>u.validateCode,"",new {@class="lbl_must"})
+                      @Html.ValidationMessage("err_validateCode", new { @class = "lbl_must" })&nbsp;
+                      <img id="img_validateCode" class="lup_vercodeimg lblmsg_code" src="@Url.Action("CreateValidateCode")" />
+                      <a  style="font-size:14px;" onclick="newValidateCode()" href="javascript:void()">换一个?</a> 
+                        </td>
+                  
+              </tr>
+              <tr class="lup_table_tr2"><td></td><td>验证码不区分大小写</td></tr>
+              <tr class="lup_table_tr1"><td colspan="2" style="height:40px;text-align:center;">
+                  <input id="lup_sub" type="submit" value="免费注册" />
+                  </td></tr>
+          </table>
+                 }
+        </div>
+           
+        <div class="lup_logup_right">
+            <p >>>已有账号,<a class="lup_logup_right_a" href="@Url.Action("Login")">立即登录</a> </p>
+            <div style="height:30px;font-size:24px;margin-left:30px;color:#f8471f;margin-top:50px;">pm24小时网</div>
+            <div style="height:30px;font-size:24px;margin-left:70px;color:#f8471f;margin-top:10px;">给你最全网址</div>
+        </div>
+        <div class="clear_float"></div>
+    </div>
+     <div id="copyright">Copyright<span class="sp_blank"></span> @Html.Raw("@")2016<span class="sp_blank"></span>pm24.cn<span class="sp_blank"></span>|<span class="sp_blank"></span>联系我们</div>
+</body>
+</html>

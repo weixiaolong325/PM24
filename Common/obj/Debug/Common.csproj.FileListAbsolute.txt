@@ -1,0 +1,5 @@
+D:\mysoft\MVC\PM24\Common\bin\Debug\Common.dll
+D:\mysoft\MVC\PM24\Common\bin\Debug\Common.pdb
+D:\mysoft\MVC\PM24\Common\obj\Debug\Common.dll
+D:\mysoft\MVC\PM24\Common\obj\Debug\Common.pdb
+D:\mysoft\MVC\PM24\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

@@ -1,0 +1,88 @@
+﻿@{
+    Layout = null;
+}
+@model PM24.ViewModes.UserLoginView 
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+       <link rel="Shortcut Icon" href="/Images/title.ico" />
+    <title>PM24登录</title>
+    <link href="~/Content/Login.css" rel="stylesheet" />
+        <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <link href="~/Content/Index.css" rel="stylesheet" />
+
+</head>
+<body style="padding: 10px">
+   @using(Html.BeginForm("Login","User",FormMethod.Post))
+   {
+    <div id="login">
+        <div id="loginlogo">
+        </div>
+        <div id="loginpanel">
+            <div class="panel-h">
+            </div>
+            <div class="panel-c">
+                <div class="panel-c-l">
+                    <table cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td align="left" colspan="2">
+                                    <h3>
+                                        PM24小时网</h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    账号：
+                                </td>
+                                <td align="left">
+                                   @Html.TextBoxFor(u => u.UserId, new { @class = "login-text" })
+                                   @Html.ValidationMessageFor(u=>u.UserId,"",new {@class="lbl_must"})
+                                    @Html.ValidationMessage("error_login",new {@class="lbl_must"})
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    密码：
+                                </td>
+                                <td align="left">
+                                    @Html.PasswordFor(u=>u.Pwd,new {@class="login-text"})
+                                    @Html.ValidationMessageFor(u=>u.Pwd,"",new {@class="lbl_must"})
+                                </td>
+                                <td><a href="javascipt:void()">忘记密码?</a></td>
+                            </tr>
+                           <tr><td></td><td align="left"><input type="checkbox" name="remberpwd" /><label style="color:#848585">7天免登录</label></td></tr>
+                            <tr>
+                                <td align="center" colspan="2">
+                                    <input type="hidden" name="reurl" value="@ViewBag.reurl">
+                                    <input type="submit" class="sub_login" value="登录"  />&nbsp;&nbsp;&nbsp;
+                                  <a href="@Url.Action("Logup")">免费注册</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="panel-c-r">
+                    <p>
+                        请从左侧输入登录账号和密码登录</p>
+                    <p>
+                        如果遇到系统问题，请联系网络管理员。</p>
+                   
+                    <p>
+                        【显示登录提示】
+                    </p>
+                </div>
+            </div>
+            <div class="panel-f">
+            </div>
+        </div>
+        <div id="logincopyright">
+            Copyright © 2012 pm24.com
+        </div>
+    </div>
+   }
+</body>
+</html>
